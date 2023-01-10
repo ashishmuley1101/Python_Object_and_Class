@@ -1,32 +1,33 @@
 
-# Python class Methods.
+# Python class Constructors using __init__() function.
 
-# The define a function inside a Python class called behaviour(methods) of that class.
+# All classes have a function called __init__(), which is always executed when the class is being initiated.
+# Use the __init__() function to assign values to object properties, or other operations that are
+# necessary to do when the object is being created.
+
 # Syntax : class ClassName:
 #                attributes ....(variables )
 #                behaviour .....(methods)
-
-class Room:
-    length = 0.0
-    breadth = 0.0
-
-    # method to calculate area
-    # The self parameter is a reference to the current instance of the class, and is used to access
-    # variables that belongs to the class.
-    # it has to be the first parameter of any function in the class
-    def calculate_area(self):
-        print("Area of Room =", self.length * self.breadth)
+#                def __init__(self,attributes...)  -----> class Constructor
+#                        self.attributes = attributes
 
 
-# create object of Room class
-study_room = Room()
+class Person:
+    name = ""
+    age = 0
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-# assign values to all the attributes
-study_room.length = 42.5
-study_room.breadth = 30.8
+p1 = Person("John", 36)
 
-# access method inside class
-study_room.calculate_area()
+print(f"My name is {p1.name} and my age is  {p1.age}")
+
+p2 = Person("Jesrry", 32)
+
+print(f"My name is {p2.name} and my age is {p2.age}")
+
 
 # Output :
-# Area of Room = 1309.0
+# My name is John and my age is  36
+# My name is Jesrry and my age is 3
