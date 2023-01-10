@@ -1,24 +1,32 @@
 
-# Python Class and Objects
+# Python class Methods.
 
-# The class keyword to create a class in Python.
+# The define a function inside a Python class called behaviour(methods) of that class.
 # Syntax : class ClassName:
 #                attributes ....(variables )
 #                behaviour .....(methods)
 
-# define a class
-class Bike:
-    name = ""   # initialized  with empty string
-    gear = 0    # initialized  with 0
+class Room:
+    length = 0.0
+    breadth = 0.0
 
-# create object of Bike class
-bike1 = Bike()
+    # method to calculate area
+    # The self parameter is a reference to the current instance of the class, and is used to access
+    # variables that belongs to the class.
+    # it has to be the first parameter of any function in the class
+    def calculate_area(self):
+        print("Area of Room =", self.length * self.breadth)
 
-# access class attributes and assign new values using the object.
-bike1.gear = 11
-bike1.name = "Mountain Bike"
 
-print(f"Name: {bike1.name}, Gears: {bike1.gear} ")
+# create object of Room class
+study_room = Room()
+
+# assign values to all the attributes
+study_room.length = 42.5
+study_room.breadth = 30.8
+
+# access method inside class
+study_room.calculate_area()
 
 # Output :
-# Name: Mountain Bike, Gears: 11
+# Area of Room = 1309.0
