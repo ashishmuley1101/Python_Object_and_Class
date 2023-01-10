@@ -1,33 +1,44 @@
 
-# Python class Constructors using __init__() function.
+# Python OOP Single Inheritance.
 
-# All classes have a function called __init__(), which is always executed when the class is being initiated.
-# Use the __init__() function to assign values to object properties, or other operations that are
-# necessary to do when the object is being created.
+# Inheritance is a way of creating a new class for using details of an existing class without modifying it.
+# The newly formed class is a derived class (or child class). Similarly,
+# the existing class is a base class (or parent class).
 
-# Syntax : class ClassName:
+# Syntax : class ParentClass:
 #                attributes ....(variables )
 #                behaviour .....(methods)
-#                def __init__(self,attributes...)  -----> class Constructor
-#                        self.attributes = attributes
+
+#          class ChildClass(ParentClass)
+#                attributes ....(variables )
+#                behaviour .....(methods)
 
 
-class Person:
-    name = ""
-    age = 0
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
 
-p1 = Person("John", 36)
+class Animal:  # base class
+    def eat(self):
+        print("I can eat!")
 
-print(f"My name is {p1.name} and my age is  {p1.age}")
+    def sleep(self):
+        print("I can sleep!")
 
-p2 = Person("Jesrry", 32)
+class Dog(Animal):  # derived class
 
-print(f"My name is {p2.name} and my age is {p2.age}")
+    def bark(self):
+        print("I can bark! Woof woof!!")
 
+
+# Create object of the Dog class
+dog1 = Dog()
+
+# Calling members of the base class
+dog1.eat()
+dog1.sleep()
+
+# Calling member of the derived class
+dog1.bark()
 
 # Output :
-# My name is John and my age is  36
-# My name is Jesrry and my age is 3
+# I can eat!
+# I can sleep!
+# I can bark! Woof woof!!
