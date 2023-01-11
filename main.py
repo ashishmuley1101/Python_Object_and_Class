@@ -1,44 +1,41 @@
 
-# Python OOP Single Inheritance.
+# Python OOP Multilevel Inheritance.
 
-# Inheritance is a way of creating a new class for using details of an existing class without modifying it.
-# The newly formed class is a derived class (or child class). Similarly,
-# the existing class is a base class (or parent class).
+# In Python, not only can we derive a class from the superclass but you can also derive a class from the derived class.
+# This form of inheritance is known as multilevel inheritance.
 
-# Syntax : class ParentClass:
-#                attributes ....(variables )
-#                behaviour .....(methods)
+# Syntax : class SuperClass:
+#                Super class code here
+#
+#          class DerivedClass1(BaseClass):
+#                 Derived class 1 code here
+#
+#          class DerivedClass2(DerivedClass1):
+#                  Derived class 2 code here
 
-#          class ChildClass(ParentClass)
-#                attributes ....(variables )
-#                behaviour .....(methods)
+class Gandfather:  # base class
+    def talk_loud(self):
+        print("Talking loudly.")
+class Father(Gandfather):  # child1 derived class
+    def waking(self):
+        print("Waking early in the morning. ")
 
+class Son(Father): # child2 derived class
 
-
-class Animal:  # base class
-    def eat(self):
-        print("I can eat!")
-
-    def sleep(self):
-        print("I can sleep!")
-
-class Dog(Animal):  # derived class
-
-    def bark(self):
-        print("I can bark! Woof woof!!")
+    def eyes(self):
+        print("Cute button eyes.")
 
 
-# Create object of the Dog class
-dog1 = Dog()
-
+# Create object
+s1 = Son()
 # Calling members of the base class
-dog1.eat()
-dog1.sleep()
-
-# Calling member of the derived class
-dog1.bark()
+s1.talk_loud()
+# Calling members of the child1 class
+s1.waking()
+# calling member of own class
+s1.eyes()
 
 # Output :
-# I can eat!
-# I can sleep!
-# I can bark! Woof woof!!
+# Talking loudly.
+# Waking early in the morning.
+# Cute button eyes.
