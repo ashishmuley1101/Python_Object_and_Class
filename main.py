@@ -1,32 +1,43 @@
 
-# Python Inheritance super() Method.
+# Python OOP Polymorphism.
 
-#  if we need to access the superclass method from the subclass, we use the super() method.
+# Polymorphism means more than one form.
+# The same entity (method or operator or object) can perform different operations in different scenarios.
+
+class Bird:
+    def intro(self):
+        print("There are many types of birds.")
+
+    def flight(self):
+        print("Most of the birds can fly but some cannot.")
+
+class Sparrow(Bird):
+    def flight(self):
+        print("Sparrows can fly.")
+
+class Ostrich(Bird):
+
+    def flight(self):
+        print("Ostriches cannot fly.")
 
 
-class Animal:
-    name = ""
+obj_bird = Bird()
+obj_spr = Sparrow()
+obj_ost = Ostrich()
 
-    def eat(self):
-        print("I can eat")
+obj_bird.intro()
+obj_bird.flight()
 
+obj_spr.intro()
+obj_spr.flight()
 
-# inherit from Animal
-class Dog(Animal):
-
-    # override eat() method
-    def eat(self):   # Overriding the eat() of Animal class
-        # call the eat() method of the superclass using * super() method *
-        super().eat()
-
-        print("I like to eat bones")
-
-
-# create an object of the subclass
-labrador = Dog()
-
-labrador.eat()
+obj_ost.intro()
+obj_ost.flight()
 
 # Output :
-# I can eat
-# I like to eat bones
+# There are many types of birds.
+# Most of the birds can fly but some cannot.
+# There are many types of birds.
+# Sparrows can fly.
+# There are many types of birds.
+# Ostriches cannot fly.
