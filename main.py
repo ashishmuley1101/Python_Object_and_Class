@@ -1,33 +1,32 @@
 
-# Python Multiple Inheritance.
+# Python Inheritance super() Method.
 
-# A class can be derived from more than one superclass in Python. This is called multiple inheritance.
+#  if we need to access the superclass method from the subclass, we use the super() method.
 
-# Syntax : class SuperClass1:
-#                features of SuperClass1
-#          class SuperClass2:
-#                features of SuperClass2
-#          class MultiDerived(SuperClass1, SuperClass2):
-#                features of SuperClass1 + SuperClass2 + MultiDerived class
 
-class Mammal:
-    def mammal_info(self):
-        print("Mammals can give direct birth.")
+class Animal:
+    name = ""
 
-class WingedAnimal:
-    def winged_animal_info(self):
-        print("Winged animals can flap.")
+    def eat(self):
+        print("I can eat")
 
-class Bat(Mammal, WingedAnimal):
-    pass
 
-# create an object of Bat class
-b1 = Bat()
+# inherit from Animal
+class Dog(Animal):
 
-# Calling the methods from super classes
-b1.mammal_info()
-b1.winged_animal_info()
+    # override eat() method
+    def eat(self):   # Overriding the eat() of Animal class
+        # call the eat() method of the superclass using * super() method *
+        super().eat()
+
+        print("I like to eat bones")
+
+
+# create an object of the subclass
+labrador = Dog()
+
+labrador.eat()
 
 # Output :
-# Mammals can give direct birth.
-# Winged animals can flap.
+# I can eat
+# I like to eat bones
