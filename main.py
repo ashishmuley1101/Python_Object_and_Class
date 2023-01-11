@@ -1,41 +1,33 @@
 
-# Python OOP Multilevel Inheritance.
+# Python Multiple Inheritance.
 
-# In Python, not only can we derive a class from the superclass but you can also derive a class from the derived class.
-# This form of inheritance is known as multilevel inheritance.
+# A class can be derived from more than one superclass in Python. This is called multiple inheritance.
 
-# Syntax : class SuperClass:
-#                Super class code here
-#
-#          class DerivedClass1(BaseClass):
-#                 Derived class 1 code here
-#
-#          class DerivedClass2(DerivedClass1):
-#                  Derived class 2 code here
+# Syntax : class SuperClass1:
+#                features of SuperClass1
+#          class SuperClass2:
+#                features of SuperClass2
+#          class MultiDerived(SuperClass1, SuperClass2):
+#                features of SuperClass1 + SuperClass2 + MultiDerived class
 
-class Gandfather:  # base class
-    def talk_loud(self):
-        print("Talking loudly.")
-class Father(Gandfather):  # child1 derived class
-    def waking(self):
-        print("Waking early in the morning. ")
+class Mammal:
+    def mammal_info(self):
+        print("Mammals can give direct birth.")
 
-class Son(Father): # child2 derived class
+class WingedAnimal:
+    def winged_animal_info(self):
+        print("Winged animals can flap.")
 
-    def eyes(self):
-        print("Cute button eyes.")
+class Bat(Mammal, WingedAnimal):
+    pass
 
+# create an object of Bat class
+b1 = Bat()
 
-# Create object
-s1 = Son()
-# Calling members of the base class
-s1.talk_loud()
-# Calling members of the child1 class
-s1.waking()
-# calling member of own class
-s1.eyes()
+# Calling the methods from super classes
+b1.mammal_info()
+b1.winged_animal_info()
 
 # Output :
-# Talking loudly.
-# Waking early in the morning.
-# Cute button eyes.
+# Mammals can give direct birth.
+# Winged animals can flap.
