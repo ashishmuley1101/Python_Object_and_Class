@@ -1,75 +1,44 @@
 
-# Python OOP Encapsulation.
+# Python Operator Overloading.
 
-# Encapsulation prevents outer classes from accessing and changing attributes and methods of a class.
-# This also helps to achieve data hiding.
-# In Python, we denote private attributes using underscore as the prefix i.e single _ or double __.
+# ** In Python that allows the same operator to have different meaning according to the context is called operator overloading.
+# + Operator Overloading
+# the + operator will perform arithmetic addition on two numbers, merge two lists, or concatenate two strings.
 
+class Complex:
+    def __init__(self, real, imag):
+        self.real = real
+        self.imag = imag
 
-class Computer:
+    # The __add__() method overloads the + operator to add the real and imaginary parts of the
+    # two complex numbers together and returns a new Complex object with the resulting values
+    def __add__(self, other):
+        return self.real + other.real, self.imag + other.imag  # obj1.real + obj2.real, obj1.imag + obj2.imag
 
-    def __init__(self):
-        self.__maxprice = 900
+obj1 = Complex(1, 2)
+obj2 = Complex(3, 4)
+obj3 = obj1 + obj2  # calling the __add__() method from class using " + " operator
 
-    def sell(self):
-        print("Selling Price: {}".format(self.__maxprice))
-
-    def setMaxPrice(self, price):
-        self.__maxprice = price
-
-c = Computer()
-c.sell()
-
-# change the price
-c.__maxprice = 1000
-c.sell()
-
-# using setter function
-c.setMaxPrice(1000)
-c.sell()
-
-
-# Output :
-# Selling Price: 900
-# Selling Price: 900
-# Selling Price: 1000
+print(obj3)   # O/p : (4, 6)
 
 #----------------------------------------------------------------
 
-#  Creating a base class
-class Base:
-     def __init__(self):
-     # Protected member
-        self._a = 2
+#  The < operator to compare two object's ages
+# __lt__() overloads the < operator to compare the twp object.
+# The __lt__() method returns,
+# True - if the first object's age is less than the second object's age
+# False - if the first object's age is greater than the second object's age
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
 
-# Creating a derived class
-class Derived(Base):
-    def __init__(self):
-        # Calling constructor of
-        # Base class
-        Base.__init__(self)
-        print("Calling protected member of base class: ",
-              self._a)
+    # overload < operator
+    def __lt__(self, other):
+        return self.age < other.age
 
-        # Modify the protected variable:
-        self._a = 3
-        print("Calling modified protected member outside class: ",
-              self._a)
+p1 = Person("Alice", 20)
+p2 = Person("Bob", 30)
 
-
-obj1 = Derived()
-
-obj2 = Base()
-
-# Calling protected member
-# Can be accessed but should not be done due to convention
-print("Accessing protected member of obj1: ", obj1._a)
-
-# Accessing the protected variable outside
-print("Accessing protected member of obj2: ", obj2._a)
-
-# Output :
-# Calling protected member of base class:  2
-# Calling modified protected member outside class:  3
-# Accessing protected member of obj1:  3
-# Accessing protected member of obj2:  2
+print(p1 < p2)  # O/p: True
+print(p2 < p1)  # O/p: False
