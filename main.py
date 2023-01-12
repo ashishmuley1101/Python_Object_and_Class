@@ -1,43 +1,75 @@
 
-# Python OOP Polymorphism.
+# Python OOP Encapsulation.
 
-# Polymorphism means more than one form.
-# The same entity (method or operator or object) can perform different operations in different scenarios.
-
-class Bird:
-    def intro(self):
-        print("There are many types of birds.")
-
-    def flight(self):
-        print("Most of the birds can fly but some cannot.")
-
-class Sparrow(Bird):
-    def flight(self):
-        print("Sparrows can fly.")
-
-class Ostrich(Bird):
-
-    def flight(self):
-        print("Ostriches cannot fly.")
+# Encapsulation prevents outer classes from accessing and changing attributes and methods of a class.
+# This also helps to achieve data hiding.
+# In Python, we denote private attributes using underscore as the prefix i.e single _ or double __.
 
 
-obj_bird = Bird()
-obj_spr = Sparrow()
-obj_ost = Ostrich()
+class Computer:
 
-obj_bird.intro()
-obj_bird.flight()
+    def __init__(self):
+        self.__maxprice = 900
 
-obj_spr.intro()
-obj_spr.flight()
+    def sell(self):
+        print("Selling Price: {}".format(self.__maxprice))
 
-obj_ost.intro()
-obj_ost.flight()
+    def setMaxPrice(self, price):
+        self.__maxprice = price
+
+c = Computer()
+c.sell()
+
+# change the price
+c.__maxprice = 1000
+c.sell()
+
+# using setter function
+c.setMaxPrice(1000)
+c.sell()
+
 
 # Output :
-# There are many types of birds.
-# Most of the birds can fly but some cannot.
-# There are many types of birds.
-# Sparrows can fly.
-# There are many types of birds.
-# Ostriches cannot fly.
+# Selling Price: 900
+# Selling Price: 900
+# Selling Price: 1000
+
+#----------------------------------------------------------------
+
+#  Creating a base class
+class Base:
+     def __init__(self):
+     # Protected member
+        self._a = 2
+
+# Creating a derived class
+class Derived(Base):
+    def __init__(self):
+        # Calling constructor of
+        # Base class
+        Base.__init__(self)
+        print("Calling protected member of base class: ",
+              self._a)
+
+        # Modify the protected variable:
+        self._a = 3
+        print("Calling modified protected member outside class: ",
+              self._a)
+
+
+obj1 = Derived()
+
+obj2 = Base()
+
+# Calling protected member
+# Can be accessed but should not be done due to convention
+print("Accessing protected member of obj1: ", obj1._a)
+
+# Accessing the protected variable outside
+print("Accessing protected member of obj2: ", obj2._a)
+
+# Output :
+# Calling protected member of base class:  2
+# Calling modified protected member outside class:  3
+# Accessing protected member of obj1:  3
+# Accessing protected member of obj2:  2
